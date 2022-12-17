@@ -1,0 +1,34 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg" style="background-color:darkgray;">
+    <div class="col-3">
+      <%= link_to "home", root_path %>
+    </div>
+    <div class="col-2 text-light">
+      <% if user_signed_in? %>
+        <span>ようこそ、<br><%= current_user.name %>さん！</span>
+      <% end %>
+    </div>
+    <div class="col-7">
+      <ul class="navbar-nav" style="flex-direction: row;">
+        <% if user_signed_in? %>
+          <li class="mr-2" style="list-style: none;">
+            <%= link_to 'マイページ', user_path(current_user), class: 'btn btn-outline-light' %>
+          </li>
+          <li class="mr-2" style="list-style: none;">
+            <%= link_to '会員一覧', users_path, class: 'btn btn-outline-light' %>
+          </li>
+          <li class="mr-2" style="list-style: none;">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-outline-light' %>
+          </li>
+        <% else %>
+          <li class="mr-2" style="list-style: none;">
+            <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-light' %>
+          </li>
+          <li class="mr-2" style="list-style: none;">
+            <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-light' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
