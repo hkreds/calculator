@@ -1,2 +1,23 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>利用者一覧</h1>
+<div>
+  <table class="table table-sm">
+    <thead>
+      <th>名前</th>
+      <th>メールアドレス</th>
+      <th>計算履歴数</th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_path(user) do %>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td><%= user.email %></td>
+          <td><%= user.calculations.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
